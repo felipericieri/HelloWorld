@@ -7,8 +7,8 @@ on:
 
 jobs:
   build:
-    uses: ./.github/actions/build.yml
+    uses: ./.github/actions/build.yml@main
 
   deploy:
     needs: build
-    uses: ./.github/actions/deploy.yml
+    uses: ./.github/actions/deploy.yml@main
