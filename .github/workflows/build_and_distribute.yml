@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: Build
-    uses: ./.github/jobs/build.yml
+    uses: ./.github/workflows/build.yml
 
   deploy:
     name: Deploy
