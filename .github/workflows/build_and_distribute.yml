@@ -8,9 +8,9 @@ on:
 jobs:
   build:
     name: Build
-    uses: ./.github/workflows/build.yml
+    uses: ./.github/jobs/build.yml
 
   deploy:
     name: Deploy
     needs: build
-    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/jobs/deploy.yml

@@ -5,4 +5,4 @@ on: [pull_request]
 jobs:
   test:
     name: Tests
-    uses: ./.github/workflows/test.yml
+    uses: ./.github/jobs/test.yml
