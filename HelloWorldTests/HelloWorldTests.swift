@@ -24,6 +24,7 @@ final class HelloWorldTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
+        XCTAssertTrue(true)
         self.measure {
             // Put the code you want to measure the time of here.
         }

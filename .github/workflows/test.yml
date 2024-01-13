@@ -1,54 +1,23 @@
-name: iOS CI/CD
+name: Test
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch:
+  workflow_call:
 
 jobs:
   test:
     runs-on: macos-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '2.7'
+      - uses: actions/checkout@v2
 
-    - name: Install Fastlane
-      run: bundler install fastlane
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
 
-    - name: Install dependencies
-      run: bundler exec fastlane install_dependencies
+      - name: Install Fastlane
+        run: gem install fastlane
 
-    - name: Run tests
-      run: fastlane test
-
-  build:
-    needs: test
-    runs-on: macos-latest
-    strategy:
-      matrix:
-        scheme: ["Development", "Distribution"]
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '2.7'
-
-    - name: Install Fastlane
-      run: bundler install fastlane
-
-    - name: Build App
-      run: fastlane build scheme:${{ matrix.scheme }}
-
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: app-${{ matrix.scheme }}
-        path: path/to/your/build/artifacts # Update this path
+      - name: Run tests with Fastlane
+        run: fastlane test
+        env:
+          SCAN_DEVICE: 'iPhone 12 Pro'
+          SCAN_SCHEME: 'Development' # Replace with your actual scheme
+          XCODE_VERSION: '14.2'

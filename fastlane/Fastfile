@@ -16,18 +16,36 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Description of what the lane does"
-  lane :custom_lane do
-    # add actions here: https://docs.fastlane.tools/actions
+
+  # Tests
+  lane :test do
+    puts "Testing kicked off! 🧪"
+
+    scan(
+      devices: [ENV["SCAN_DEVICE"]],
+      scheme: ENV["SCAN_SCHEME"],
+      xcode_version: ENV["XCODE_VERSION"]
+    )
   end
 
-  desc "Tests"
-  lane :tests do
-    run_tests(scheme: "HelloWorld")
+  # Builds
+  lane :build do
+    puts "Building the App now... 🍿"
+
+    gym(
+      scheme: ENV["BUILD_SCHEME"]
+    )
   end
 
-  desc "UITests"
-  lane :uitests do
-    run_tests(scheme: "HelloWorld")
+  # Deploys
+  lane :deploy do
+    puts "Under construction... 🚜"
+
+    # Deploy to App Center
+    # ...
+    
+    # Deploy to TestFlight
+    # upload_to_testflight
   end
+
 end
