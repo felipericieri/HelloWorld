@@ -4,10 +4,33 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>HelloWorld Sandbox.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>HelloWorld.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>093EF8AA2B4C990C00217775</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>093EF8BA2B4C990E00217775</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>093EF8C42B4C990E00217775</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
