@@ -21,16 +21,19 @@ platform :ios do
   lane :test do
     puts "Testing kicked off! 🧪"
 
+    xcodes(version: "15.1")
+
     scan(
       devices: [ENV["SCAN_DEVICE"]],
-      scheme: ENV["SCAN_SCHEME"],
-      xcode_version: ENV["XCODE_VERSION"]
+      scheme: ENV["SCAN_SCHEME"]
     )
   end
 
   # Builds
   lane :build do
     puts "Building the App now... 🍿"
+
+    xcodes(version: "15.1")
 
     gym(
       scheme: ENV["BUILD_SCHEME"]
@@ -46,6 +49,28 @@ platform :ios do
     
     # Deploy to TestFlight
     # upload_to_testflight
+  end
+
+  # Private
+
+  desc "Create a keychain if on CI"
+  lane :ci_keychain_setup do
+    create_ci_keychain if is_ci?
+  end
+
+  private_lane :create_ci_keychain do
+    create_keychain(
+      name: "CI_Keychain",
+      password: ENV["KEYCHAIN_PASSWORD"], # Set this in your CI environment variables
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: true
+    )
+  end
+
+  private_lane :is_ci? do
+    ENV['CI'] || ENV['CONTINUOUS_INTEGRATION']
   end
 
 end
