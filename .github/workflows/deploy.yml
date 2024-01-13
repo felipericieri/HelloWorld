@@ -1,4 +1,4 @@
-name: Deploy
+name: "Job: Deploy"
 
 on:
   workflow_call:

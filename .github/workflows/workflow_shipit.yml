@@ -1,4 +1,4 @@
-name: Build & Distribute
+name: "Workflow: Ship it"
 
 on:
   push:
