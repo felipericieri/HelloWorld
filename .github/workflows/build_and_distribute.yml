@@ -7,10 +7,14 @@ on:
 
 jobs:
   build:
-    name: Build
-    uses: ./.github/actions/build.yml
+    runs-on: macos-latest
+    steps:
+    - name: Build
+      uses: ./.github/actions/build.yml
 
   deploy:
-    name: Deploy
+    runs-on: macos-latest
     needs: build
-    uses: ./.github/actions/deploy.yml
+    steps:
+    - name: Deploy
+      uses: ./.github/actions/deploy.yml
