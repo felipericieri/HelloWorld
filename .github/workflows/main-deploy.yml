@@ -1,11 +1,12 @@
-name: Main branch: Deploy
+name: Main branch (Deploy)
 
 on:
   workflow_call:
 
 jobs:
   deploy:
-        uses: felipericieri/HelloWorld/.github/workflows/main-build.yml@main
+    name: Deploy
+    uses: felipericieri/HelloWorld/.github/workflows/main-build.yml@main
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2

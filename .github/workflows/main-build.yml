@@ -1,11 +1,11 @@
-name: Main branch: Build
+name: Main branch (Build)
 
 on:
   workflow_call:
 
 jobs:
   build:
-  - name: Build project
+    name: Build project
     uses: felipericieri/HelloWorld/.github/workflows/main-test.yml@main
     runs-on: macos-latest
     strategy:

@@ -1,4 +1,4 @@
-name: Main branch: Merge requests checks
+name: Main branch (Tests)
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-  - name: Test Merge Request
+    name: Test Merge Request
     runs-on: macos-latest
 
     steps:
