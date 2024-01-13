@@ -8,13 +8,17 @@ on:
 jobs:
   build:
     runs-on: macos-latest
+    
     steps:
+    - uses: actions/checkout@v2
     - name: Build
       uses: ./.github/actions/build.yml
 
   deploy:
     runs-on: macos-latest
     needs: build
+
     steps:
+    - uses: actions/checkout@v2
     - name: Deploy
       uses: ./.github/actions/deploy.yml
