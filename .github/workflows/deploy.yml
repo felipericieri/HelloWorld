@@ -1,0 +1,19 @@
+name: Deploy Job
+
+on:
+  workflow_call:
+
+jobs:
+  deploy:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+
+      - name: Install Fastlane
+        run: gem install fastlane
+
+      - name: Deploy the app with Fastlane
+        run: fastlane deploy

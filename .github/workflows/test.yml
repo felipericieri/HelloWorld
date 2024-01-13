@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+
+      - name: Install Fastlane
+        run: gem install fastlane
+
+      - name: Run tests with Fastlane
+        run: fastlane test
+        env:
+          SCAN_DEVICE: 'iPhone 12 Pro'
+          SCAN_SCHEME: 'Development' # Replace with your actual scheme
+          XCODE_VERSION: '14.2'
