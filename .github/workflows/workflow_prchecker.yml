@@ -4,9 +4,4 @@ on: [pull_request]
 
 jobs:
   test:
-    runs-on: macos-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Tests
-      uses: ./.github/workflows/test.yml
+    uses: ./.github/workflows/test.yml
