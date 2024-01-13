@@ -1,5 +1,5 @@
 scheme("Development")
-devices(["iPhone 12 Pro", "iPad Air"])
+devices(["iPhone 12 Pro", "iPad Air (3rd generation)"])
 
 clean(true)
 

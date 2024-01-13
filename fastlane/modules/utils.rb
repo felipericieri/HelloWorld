@@ -3,7 +3,7 @@
 module Utils
   # Define whether fastlane is running locally or in CI
   def self.is_ci
-    ENV['CI']
+    ENV['CI'] == "true"
   end
 
   # Sets up keychain in CI
