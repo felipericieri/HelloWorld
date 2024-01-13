@@ -20,3 +20,4 @@ jobs:
         env:
           SCAN_DEVICE: 'iPhone 12 Pro'
           SCAN_SCHEME: 'Development' # Replace with your actual scheme
+          CI: true
