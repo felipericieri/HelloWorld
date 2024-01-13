@@ -1,14 +1,14 @@
 # Fastfile
 
-require_relative 'XcodeSetup'
-require_relative 'Utils'
+require_relative 'modules/xcode_setup'
+require_relative 'modules/utils'
 
 default_platform(:ios)
 
 platform :ios do
 
   before_all do
-    XcodeSetup.set_xcode_version
+    xcodes(version: XcodeSetup.xcode_version)
   end
 
   # Tests

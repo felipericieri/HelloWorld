@@ -39,14 +39,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### ios ci_keychain_setup
-
-```sh
-[bundle exec] fastlane ios ci_keychain_setup
-```
-
-Create a keychain if on CI
-
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
