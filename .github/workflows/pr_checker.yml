@@ -4,5 +4,8 @@ on: [pull_request]
 
 jobs:
   test:
-    name: Tests
-    uses: ./.github/actions/test.yml
+    runs-on: macos-latest
+
+    steps:
+    - name: Tests
+      uses: ./.github/actions/test.yml
