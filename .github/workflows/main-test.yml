@@ -20,8 +20,5 @@ jobs:
     - name: Install Fastlane
       run: gem install fastlane
 
-    - name: Install dependencies
-      run: fastlane install_dependencies
-
     - name: Run tests
-      run: fastlane test
+      run: fastlane tests
