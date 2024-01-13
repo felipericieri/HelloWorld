@@ -1,0 +1,37 @@
+name: Main branch: Build
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+  - name: Build project
+    uses: felipericieri/HelloWorld/.github/workflows/main-test.yml@main
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        scheme: ["HelloWorld"]
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.7'
+
+    - name: Install Fastlane
+      run: gem install fastlane
+
+    - name: Build App
+      run: fastlane build scheme:${{ matrix.scheme }}
+      env:
+        MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+        FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
+        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+        FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: app-${{ matrix.scheme }}
+        path: path/to/your/build/artifacts # Update this path
