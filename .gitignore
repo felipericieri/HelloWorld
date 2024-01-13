@@ -34,6 +34,7 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+fastlane/.env
 
 # Other files and folders
 .DS_Store

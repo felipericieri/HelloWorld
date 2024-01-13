@@ -7,6 +7,7 @@ default_platform(:ios)
 
 platform :ios do
 
+  # Prepare environment
   before_all do
     xcodes(version: XcodeSetup.xcode_version)
   end
