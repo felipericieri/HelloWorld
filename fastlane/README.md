@@ -15,29 +15,37 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
-### ios custom_lane
+### ios test
 
 ```sh
-[bundle exec] fastlane ios custom_lane
+[bundle exec] fastlane ios test
 ```
 
-Description of what the lane does
 
-### ios tests
+
+### ios build
 
 ```sh
-[bundle exec] fastlane ios tests
+[bundle exec] fastlane ios build
 ```
 
-Tests
 
-### ios uitests
+
+### ios deploy
 
 ```sh
-[bundle exec] fastlane ios uitests
+[bundle exec] fastlane ios deploy
 ```
 
-UITests
+
+
+### ios ci_keychain_setup
+
+```sh
+[bundle exec] fastlane ios ci_keychain_setup
+```
+
+Create a keychain if on CI
 
 ----
 

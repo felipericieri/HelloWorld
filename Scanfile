@@ -1,0 +1,6 @@
+scheme("Development")
+devices(["iPhone 12 Pro", "iPad Air"])
+
+clean(true)
+
+output_types("html")
