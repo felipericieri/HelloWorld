@@ -1,27 +1,19 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
+# Fastfile
 
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
+require_relative 'XcodeSetup'
+require_relative 'Utils'
 
 default_platform(:ios)
 
 platform :ios do
 
+  before_all do
+    XcodeSetup.set_xcode_version
+  end
+
   # Tests
   lane :test do
     puts "Testing kicked off! 🧪"
-
-    xcodes(version: "15.1")
 
     scan(
       devices: [ENV["SCAN_DEVICE"]],
@@ -32,8 +24,6 @@ platform :ios do
   # Builds
   lane :build do
     puts "Building the App now... 🍿"
-
-    xcodes(version: "15.1")
 
     gym(
       scheme: ENV["BUILD_SCHEME"]
@@ -50,27 +40,19 @@ platform :ios do
     # Deploy to TestFlight
     # upload_to_testflight
   end
-
-  # Private
-
-  desc "Create a keychain if on CI"
-  lane :ci_keychain_setup do
-    create_ci_keychain if is_ci?
-  end
-
-  private_lane :create_ci_keychain do
-    create_keychain(
-      name: "CI_Keychain",
-      password: ENV["KEYCHAIN_PASSWORD"], # Set this in your CI environment variables
-      default_keychain: true,
-      unlock: true,
-      timeout: 3600,
-      lock_when_sleeps: true
-    )
-  end
-
-  private_lane :is_ci? do
-    ENV['CI'] || ENV['CONTINUOUS_INTEGRATION']
-  end
-
 end
+
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
