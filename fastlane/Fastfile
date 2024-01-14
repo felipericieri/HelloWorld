@@ -27,7 +27,9 @@ platform :ios do
     puts "Building the App now... 🍿"
 
     gym(
-      scheme: ENV["BUILD_SCHEME"]
+      scheme: ENV["BUILD_SCHEME"],
+      clean: true,
+      output_name: "HelloWorldApp"
     )
   end
 
