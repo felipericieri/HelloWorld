@@ -11,6 +11,13 @@ module Env
     ENV['SCAN_SCHEME']
   end
 
+  # Returns the pre-defined scheme to build the app
+  # (it can be running two schemes at the same time in different jobs)
+  # (e.g. building two variants of the app concurrently)
+  def self.build_scheme
+    ENV['BUILD_SCHEME']
+  end
+
   # Returns the pre-defined device to run tests
   def self.test_devices
     # Retrieve the string

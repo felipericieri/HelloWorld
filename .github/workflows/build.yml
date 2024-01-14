@@ -2,6 +2,10 @@ name: "Job: Build"
 
 on:
   workflow_call:
+    inputs:
+      scheme:
+        required: true
+        type: string
 
 jobs:
   build:
@@ -22,4 +26,4 @@ jobs:
         run: fastlane build
         env:
           CI: true
-          BUILD_SCHEME: 'Development'
+          BUILD_SCHEME: scheme

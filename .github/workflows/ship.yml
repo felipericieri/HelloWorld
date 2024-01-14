@@ -1,0 +1,30 @@
+name: "Workflow: Ship it"
+
+on:
+  workflow_call:
+    inputs:
+      build_scheme:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: macos-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Builds the app according to scheme
+        uses: ./.github/workflows/build.yml
+        with:
+          scheme: build_scheme
+
+  deploy:
+    runs-on: macos-latest
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Deploy to Beta testing
+        uses: ./.github/workflows/deploy.yml

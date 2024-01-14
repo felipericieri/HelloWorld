@@ -28,7 +28,7 @@ platform :ios do
 
   # Builds
   lane :build do
-    build_scheme(scheme: "Development")
+    build_scheme(scheme: Env.build_scheme)
   end
 
   # Deploys

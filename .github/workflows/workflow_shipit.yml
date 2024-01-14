@@ -6,9 +6,17 @@ on:
       - main
 
 jobs:
-  build:
-    uses: ./.github/workflows/build.yml
+  dev:
+    uses: ./.github/workflows/ship.yml
+    with:
+      BUILD_SCHEME: 'Development'
 
-  deploy:
-    needs: build
-    uses: ./.github/workflows/deploy.yml
+  unprotected:
+    uses: ./.github/workflows/ship.yml
+    with:
+      BUILD_SCHEME: 'Unprotected'
+
+  live:
+    uses: ./.github/workflows/ship.yml
+    with:
+      BUILD_SCHEME: 'Live'
