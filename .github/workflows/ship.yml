@@ -12,7 +12,7 @@ jobs:
     name: Builds the app according to scheme
     uses: ./.github/workflows/build.yml
     with:
-      scheme: build_scheme
+      scheme: inputs.build_scheme
 
   deploy:
     needs: build

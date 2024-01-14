@@ -10,16 +10,16 @@ jobs:
     name: Create Dev Build
     uses: ./.github/workflows/ship.yml
     with:
-      BUILD_SCHEME: 'Development'
+      build_scheme: 'Development'
 
   unprotected:
     name: Create Unprotected Build
     uses: ./.github/workflows/ship.yml
     with:
-      BUILD_SCHEME: 'Unprotected'
+      build_scheme: 'Unprotected'
 
   live:
     name: Create Live Build
     uses: ./.github/workflows/ship.yml
     with:
-      BUILD_SCHEME: 'Live'
+      build_scheme: 'Live'
