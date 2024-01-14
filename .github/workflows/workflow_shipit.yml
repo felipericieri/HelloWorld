@@ -7,16 +7,19 @@ on:
 
 jobs:
   dev:
+    name: Create Dev Build
     uses: ./.github/workflows/ship.yml
     with:
       BUILD_SCHEME: 'Development'
 
   unprotected:
+    name: Create Unprotected Build
     uses: ./.github/workflows/ship.yml
     with:
       BUILD_SCHEME: 'Unprotected'
 
   live:
+    name: Create Live Build
     uses: ./.github/workflows/ship.yml
     with:
       BUILD_SCHEME: 'Live'

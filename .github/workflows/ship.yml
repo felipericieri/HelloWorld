@@ -1,4 +1,4 @@
-name: "Workflow: Ship it"
+name: "Job: Ship (Build & Deploy)"
 
 on:
   workflow_call:
@@ -9,22 +9,12 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
-    
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Builds the app according to scheme
-        uses: ./.github/workflows/build.yml
-        with:
-          scheme: build_scheme
+    name: Builds the app according to scheme
+    uses: ./.github/workflows/build.yml
+    with:
+      scheme: build_scheme
 
   deploy:
-    runs-on: macos-latest
     needs: build
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Deploy to Beta testing
-        uses: ./.github/workflows/deploy.yml
+    name: Deploy to Beta testing
+    uses: ./.github/workflows/deploy.yml
