@@ -1,8 +1,10 @@
 # Fastfile
 
-require_relative 'modules/xcode_setup'
+require_relative 'modules/env'
 require_relative 'modules/utils'
+require_relative 'modules/xcode_setup'
 
+# Defines iOS as default platform
 default_platform(:ios)
 
 platform :ios do
@@ -17,20 +19,16 @@ platform :ios do
     puts "Testing kicked off! 🧪"
 
     scan(
-      devices: [ENV["SCAN_DEVICE"]],
-      scheme: ENV["SCAN_SCHEME"]
+      devices: Env.test_devices,
+      scheme: Env.test_scheme,
+      clean: true,
+      output_types: "html"
     )
   end
 
   # Builds
   lane :build do
-    puts "Building the App now... 🍿"
-
-    gym(
-      scheme: ENV["BUILD_SCHEME"],
-      clean: true,
-      output_name: "HelloWorldApp"
-    )
+    build_scheme(scheme: "Development")
   end
 
   # Deploys
@@ -42,6 +40,24 @@ platform :ios do
     
     # Deploy to TestFlight
     # upload_to_testflight
+  end
+
+  #####
+  # Private lanes
+  #####
+
+  # Builds
+  private_lane :build_scheme do |options|
+    scheme = options[:scheme]
+    output_name = "HelloWorld_" + scheme
+
+    puts "Building " + scheme + " now... 🍿"
+
+    gym(
+      scheme: scheme,
+      clean: true,
+      output_name: output_name
+    )
   end
 end
 

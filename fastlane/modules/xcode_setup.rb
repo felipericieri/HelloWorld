@@ -1,6 +1,6 @@
 # XcodeSetup
 
-require_relative 'utils'
+require_relative 'env'
 
 module XcodeSetup
   # Sets the right Xcode version for the environment
@@ -10,6 +10,6 @@ module XcodeSetup
     ci_xcode_version = "14.2"
 
     # Select Xcode version based on environment
-    Utils.is_ci ? ci_xcode_version : local_xcode_version
+    Env.is_ci ? ci_xcode_version : local_xcode_version
   end
 end
