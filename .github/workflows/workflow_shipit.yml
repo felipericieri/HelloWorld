@@ -12,14 +12,14 @@ jobs:
     with:
       build_scheme: 'Development'
 
-  unprotected:
-    name: Create Unprotected Build
-    uses: ./.github/workflows/ship.yml
-    with:
-      build_scheme: 'Unprotected'
+  # unprotected:
+  #   name: Create Unprotected Build
+  #   uses: ./.github/workflows/ship.yml
+  #   with:
+  #     build_scheme: 'Unprotected'
 
-  live:
-    name: Create Live Build
-    uses: ./.github/workflows/ship.yml
-    with:
-      build_scheme: 'Live'
+  # live:
+  #   name: Create Live Build
+  #   uses: ./.github/workflows/ship.yml
+  #   with:
+  #     build_scheme: 'Live'

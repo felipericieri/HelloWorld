@@ -26,4 +26,4 @@ jobs:
         run: fastlane build
         env:
           CI: true
-          BUILD_SCHEME: inputs.scheme
+          BUILD_SCHEME: ${{ inputs.scheme }}
