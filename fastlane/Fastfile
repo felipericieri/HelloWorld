@@ -2,7 +2,6 @@
 
 require_relative 'modules/env'
 require_relative 'modules/utils'
-require_relative 'modules/xcode_setup'
 
 # Defines iOS as default platform
 default_platform(:ios)
@@ -11,7 +10,7 @@ platform :ios do
 
   # Prepare environment
   before_all do
-    xcodes(version: XcodeSetup.xcode_version)
+    xcodes(version: Utils.xcode_version)
   end
 
   # Tests
