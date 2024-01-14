@@ -1,2 +1,2 @@
 # HelloWorld
-Test repository
+Repository to test CI integration
