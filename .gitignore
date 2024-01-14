@@ -63,3 +63,6 @@ fastlane/.env
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Server (temp)
+Server/venv
