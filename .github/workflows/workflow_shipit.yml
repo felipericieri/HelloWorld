@@ -4,13 +4,20 @@ on:
   push:
     branches:
       - main
+  workflow_call:
+    inputs:
+      build_scheme:
+        required: true
+        type: string
+        description: 'Select the scheme you want to use to build the app'
+        default: 'Development'
 
 jobs:
   dev:
     name: Create Dev Build
     uses: ./.github/workflows/ship.yml
     with:
-      build_scheme: 'Development'
+      build_scheme: ${{ inputs.build_scheme }}
 
   # unprotected:
   #   name: Create Unprotected Build
