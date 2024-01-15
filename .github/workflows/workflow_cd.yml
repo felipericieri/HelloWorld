@@ -9,3 +9,6 @@ jobs:
   kickoff:
     name: Kick off builds
     uses: ./.github/workflows/cd.yml
+    with:
+      build_scheme: 'main'
+
