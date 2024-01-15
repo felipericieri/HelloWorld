@@ -1,0 +1,31 @@
+name: "Workflow: Manual Dispatch"
+
+env:
+  GENERATED_IPA: ""
+  BRANCH_NAME: ${{ github.event.inputs.target_branch || 'main' }}
+  BUILD_SCHEME: ${{ github.event.inputs.build_scheme || 'Development' }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_branch:
+        required: true
+        description: 'Target branch'
+        type: string
+      build_scheme:
+        required: true
+        description: 'Select the scheme you want to use to build the app'
+        type: choice
+        options:
+          - None
+          - Development
+          - Unprotected
+          - Live
+
+jobs:
+  build_ipa:
+    name: Build IPA
+    uses: ./.github/workflows/ship.yml
+    with:
+      build_scheme: ${{ env.BUILD_SCHEME }}
+      branch: ${{ env.BRANCH_NAME }}

@@ -6,6 +6,10 @@ on:
       scheme:
         required: true
         type: string
+      branch_name:
+        required: false
+        type: string
+        default: 'main'
 
 jobs:
   build:
@@ -13,11 +17,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.branch_name }}
 
-      - name: Set up Ruby 2.7.0
-        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+      - name: Set up Ruby 2.7.0 and Bundler
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7.0
+          bundler-cache: true
 
       - name: Install Fastlane
         run: gem install fastlane

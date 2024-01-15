@@ -1,0 +1,11 @@
+name: "Workflow: Continuous Delivery"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  kickoff:
+    name: Kick off builds
+    uses: ./.github/workflows/cd.yml

@@ -1,16 +1,15 @@
-name: "Workflow: Ship it"
+name: "Job: Continuous Delivery"
 
 on:
-  push:
-    branches:
-      - main
   workflow_call:
     inputs:
       build_scheme:
         required: true
         type: string
-        description: 'Select the scheme you want to use to build the app'
-        default: 'Development'
+      branch_name:
+        required: false
+        type: string
+        default: 'main'
 
 jobs:
   dev:
@@ -18,15 +17,18 @@ jobs:
     uses: ./.github/workflows/ship.yml
     with:
       build_scheme: ${{ inputs.build_scheme }}
+      branch_name: ${{ inputs.branch_name }}
 
   # unprotected:
   #   name: Create Unprotected Build
   #   uses: ./.github/workflows/ship.yml
   #   with:
   #     build_scheme: 'Unprotected'
+  #     branch_name: ${{ inputs.branch_name }}
 
   # live:
   #   name: Create Live Build
   #   uses: ./.github/workflows/ship.yml
   #   with:
   #     build_scheme: 'Live'
+  #     branch_name: ${{ inputs.branch_name }}
