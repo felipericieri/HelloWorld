@@ -3,9 +3,6 @@ name: "Job: Continuous Delivery"
 on:
   workflow_call:
     inputs:
-      build_scheme:
-        required: true
-        type: string
       branch_name:
         required: false
         type: string
@@ -16,7 +13,7 @@ jobs:
     name: Create Dev Build
     uses: ./.github/workflows/ship.yml
     with:
-      build_scheme: ${{ inputs.build_scheme }}
+      build_scheme: 'Development'
       branch_name: ${{ inputs.branch_name }}
 
   # unprotected:
