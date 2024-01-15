@@ -6,9 +6,25 @@ on:
       - main
 
 jobs:
-  kickoff:
-    name: Kick off builds
-    uses: ./.github/workflows/cd.yml
+  dev:
+    name: Create Dev Build
+    uses: ./.github/workflows/ship.yml
     with:
+      build_scheme: 'Development'
       branch_name: 'main'
+
+  # unprotected:
+  #   name: Create Unprotected Build
+  #   uses: ./.github/workflows/ship.yml
+  #   with:
+  #     build_scheme: 'Unprotected'
+  #     branch_name: 'main'
+
+  # live:
+  #   name: Create Live Build
+  #   uses: ./.github/workflows/ship.yml
+  #   with:
+  #     build_scheme: 'Live'
+  #     branch_name: 'main'
+      
 

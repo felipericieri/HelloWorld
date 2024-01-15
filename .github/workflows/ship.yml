@@ -17,7 +17,7 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       scheme: ${{ inputs.build_scheme }}
-      branch: ${{ inputs.branch_name }}
+      branch_name: ${{ inputs.branch_name }}
 
   deploy:
     needs: build
