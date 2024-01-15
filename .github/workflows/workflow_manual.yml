@@ -27,5 +27,5 @@ jobs:
     name: Build IPA
     uses: ./.github/workflows/ship.yml
     with:
-      build_scheme: ${{ env.BUILD_SCHEME }}
-      branch: ${{ env.BRANCH_NAME }}
+      build_scheme: $BUILD_SCHEME
+      branch_name: $BRANCH_NAME
